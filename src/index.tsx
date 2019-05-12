@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { LocaleProvider } from 'antd';
 import { addLocaleData, IntlProvider } from 'react-intl';
 import App from './App';
@@ -10,12 +11,13 @@ import * as serviceWorker from './serviceWorker';
 
 const appLocale = getLocale();
 addLocaleData(appLocale.data);
-console.log(appLocale.data);
 
 ReactDOM.render(
     <LocaleProvider locale={appLocale.antd}>
         <IntlProvider locale={appLocale.locale} messages={appLocale.messages}>
-            <App />
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
         </IntlProvider>
     </LocaleProvider>,
     document.getElementById('root')

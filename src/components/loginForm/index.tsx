@@ -18,68 +18,60 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
         });
     };
 
+    const UsernameInput = getFieldDecorator('username', {
+        rules: [
+            {
+                required: true,
+                message: '请输入用户名!',
+            },
+        ],
+    })(
+        <Input
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="用户名"
+        />
+    );
+
+    const PasswordInput = getFieldDecorator('password', {
+        rules: [
+            {
+                required: true,
+                message: '请输入密码!',
+            },
+        ],
+    })(
+        <Input
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            type="password"
+            placeholder="密码"
+        />
+    );
+
+    const RememberCheckbox = getFieldDecorator('remember', {
+        valuePropName: 'checked',
+        initialValue: true,
+    })(<Checkbox className="login-form_remember-me">记住密码</Checkbox>);
+
     return (
         <Form onSubmit={handleSubmit} className="login-form">
+            <Form.Item>{UsernameInput}</Form.Item>
+            <Form.Item>{PasswordInput}</Form.Item>
             <Form.Item>
-                {getFieldDecorator('username', {
-                    rules: [
-                        {
-                            required: true,
-                            message: 'Please input your username!',
-                        },
-                    ],
-                })(
-                    <Input
-                        prefix={
-                            <Icon
-                                type="user"
-                                style={{ color: 'rgba(0,0,0,.25)' }}
-                            />
-                        }
-                        placeholder="Username"
-                    />
-                )}
-            </Form.Item>
-            <Form.Item>
-                {getFieldDecorator('password', {
-                    rules: [
-                        {
-                            required: true,
-                            message: 'Please input your Password!',
-                        },
-                    ],
-                })(
-                    <Input
-                        prefix={
-                            <Icon
-                                type="lock"
-                                style={{ color: 'rgba(0,0,0,.25)' }}
-                            />
-                        }
-                        type="password"
-                        placeholder="Password"
-                    />
-                )}
-            </Form.Item>
-            <Form.Item>
-                {getFieldDecorator('remember', {
-                    valuePropName: 'checked',
-                    initialValue: true,
-                })(<Checkbox>Remember me</Checkbox>)}
+                {RememberCheckbox}
                 <a className="login-form-forgot" href="">
-                    Forgot password
+                    忘记密码
                 </a>
                 <Button
                     type="primary"
                     htmlType="submit"
-                    className="login-form-button"
+                    className="login-form-submit-button"
                 >
-                    Log in
+                    登入
                 </Button>
-                Or <a href="">register now!</a>
+                <a href="">立即注册</a>
             </Form.Item>
         </Form>
     );
 };
 
-export const LoginForm = Form.create({ name: 'normal_login' })(InnerLoginForm);
+export const LoginForm = Form.create()(InnerLoginForm);
