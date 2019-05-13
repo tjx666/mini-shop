@@ -5,7 +5,10 @@ import './style.scss';
 export const RegisterPage = () => {
     return (
         <div className="register-page">
-            <RegisterForm />
+            <div className="register-page-panel">
+                <span className="register-page-welcome">欢迎注册微商城</span>
+                <RegisterForm />
+            </div>
         </div>
     );
 };
