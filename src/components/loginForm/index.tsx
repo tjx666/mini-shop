@@ -58,8 +58,8 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
             <Form.Item>{PasswordInput}</Form.Item>
             <Form.Item>
                 {RememberCheckbox}
-                <a className="login-form-forgot" href="">
-                    忘记密码
+                <a className="login-form-register" href="/register">
+                    立即注册
                 </a>
                 <Button
                     type="primary"
@@ -68,10 +68,9 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
                 >
                     登入
                 </Button>
-                <a href="">立即注册</a>
             </Form.Item>
         </Form>
     );
 };
 
-export const LoginForm = Form.create()(InnerLoginForm);
+export const LoginForm = Form.create({ name: 'login' })(InnerLoginForm);

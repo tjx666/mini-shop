@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginPage } from './pages';
+import { LoginPage, RegisterPage } from './pages';
 import './App.scss';
 
 const App = () => {
@@ -8,7 +8,8 @@ const App = () => {
         <div className="app">
             <Switch>
                 <Route path="/login" component={LoginPage} />
-                <Redirect to="/login" />
+                <Route path="/register" component={RegisterPage} />
+                <Redirect to="/register" />
             </Switch>
         </div>
     );
