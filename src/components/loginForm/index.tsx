@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import './style.scss';
@@ -58,9 +59,9 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
             <Form.Item>{PasswordInput}</Form.Item>
             <Form.Item>
                 {RememberCheckbox}
-                <a className="login-form-register" href="/register">
+                <Link className="login-form-register" to="/register">
                     立即注册
-                </a>
+                </Link>
                 <Button
                     type="primary"
                     htmlType="submit"

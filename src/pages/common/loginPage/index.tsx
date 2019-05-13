@@ -4,8 +4,9 @@ import './style.scss';
 
 export const LoginPage = () => {
     return (
-        <div className="login-page">
+        <main className="login-page">
+            <span className="login-page-title">欢迎回来</span>
             <LoginForm />
-        </div>
+        </main>
     );
 };
