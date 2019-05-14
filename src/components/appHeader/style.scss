@@ -1,0 +1,24 @@
+.app-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0 2px 8px #f0f1f2;
+
+    &-title {
+        font-weight: bold;
+        font-size: 18px;
+        font-style: italic;
+        letter-spacing: 2px;
+    }
+
+    &-menu {
+        position: absolute;
+        right: 140px;
+    }
+
+    &-avatar {
+        position: absolute;
+        right: 60px;
+    }
+}

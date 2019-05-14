@@ -1,15 +1,16 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { LoginPage, RegisterPage } from './pages';
+import { LoginPage, RegisterPage, HomePage } from './pages';
 import './App.scss';
 
 const App = () => {
     return (
         <div className="app">
             <Switch>
+                <Route path="/home" component={HomePage} />
                 <Route path="/login" component={LoginPage} />
                 <Route path="/register" component={RegisterPage} />
-                <Redirect to="/register" />
+                <Redirect to="/home" />
             </Switch>
         </div>
     );
