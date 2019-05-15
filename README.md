@@ -2,8 +2,6 @@
 
 一个迷你商城，数据结构课设前端部分。
 
-暂停开发，先开发后台...
-
 ### 技术栈
 
 1. react hooks + react router4 + constate
