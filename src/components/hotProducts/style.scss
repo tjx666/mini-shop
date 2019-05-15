@@ -1,0 +1,13 @@
+.hot-products {
+    max-width: 1024px;
+    margin: 0 auto;
+    margin-top: 100px;
+
+    &-header {
+        padding: 10px 0;
+        color: #666;
+        font-weight: bold;
+        font-size: 18px;
+        text-align: center;
+    }
+}
