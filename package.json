@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@types/mockjs": "^1.0.2",
         "antd": "^3.17.0",
         "axios": "^0.18.0",
         "chance": "^1.0.18",
@@ -10,7 +11,9 @@
         "constate": "^1.1.1",
         "faker": "^4.1.0",
         "lodash": "^4.17.11",
+        "mockjs": "^1.0.1-beta3",
         "normalize.css": "^8.0.1",
+        "randexp": "^0.5.3",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
         "react-intl": "^2.8.0",
@@ -22,6 +25,7 @@
     "devDependencies": {
         "@commitlint/cli": "^7.6.1",
         "@commitlint/config-conventional": "^7.6.0",
+        "@types/chance": "^1.0.4",
         "@types/classnames": "^2.2.7",
         "@types/faker": "^4.1.5",
         "@types/jest": "24.0.12",

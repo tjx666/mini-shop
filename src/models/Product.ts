@@ -1,11 +1,7 @@
-export default class {
+export interface Product {
     id: string;
-    name: string = '';
-    price: number = 999999.0;
-    category: string = '未分类';
-    saleVolume: number = 0;
-
-    constructor(id: string) {
-        this.id = id;
-    }
+    name: string;
+    price: number;
+    category: string;
+    saleVolume: number;
 }

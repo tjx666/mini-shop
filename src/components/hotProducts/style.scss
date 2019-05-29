@@ -1,13 +1,28 @@
+@import '../../styles/theme.scss';
+
 .hot-products {
     max-width: 1024px;
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 20px;
 
     &-header {
-        padding-bottom: 30px;
+        padding-bottom: 10px;
         color: #666;
         font-weight: bold;
         font-size: 22px;
         text-align: center;
+    }
+
+    .action-cell {
+        padding-left: 4px;
+
+        .shopping-car-icon {
+            font-size: 24px;
+            cursor: pointer;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
     }
 }

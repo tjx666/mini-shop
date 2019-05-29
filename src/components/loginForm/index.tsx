@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { message, Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
+import axios from 'axios';
+import Configuration from '../../constants/config';
 import './style.scss';
 
 interface LoginFormProps {
@@ -14,12 +16,26 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
         e.preventDefault();
         form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                // console.log('Received values of form: ', values);
+                const { email, password } = values;
+                axios
+                    .post(`${Configuration.domain}/login`, {
+                        email,
+                        password,
+                    })
+                    .then(response => {
+                        if (response.data.message === 'SUCCESS') {
+                            message.success('登入成功!');
+                        } else {
+                            message.error('登入失败！请检查您的邮箱和密码！');
+                        }
+                    })
+                    .catch(error => console.error(error));
             }
         });
     };
 
-    const UsernameInput = getFieldDecorator('username', {
+    const UsernameInput = getFieldDecorator('email', {
         rules: [
             {
                 required: true,

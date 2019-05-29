@@ -1,6 +1,17 @@
 import * as React from 'react';
-import { Form, Input, Tooltip, Icon, Select, Checkbox, Button } from 'antd';
+import {
+    message,
+    Form,
+    Input,
+    Tooltip,
+    Icon,
+    Select,
+    Checkbox,
+    Button,
+} from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
+import Configuration from '../../constants/config';
+import axios from 'axios';
 import './style.scss';
 
 const { Option } = Select;
@@ -16,8 +27,33 @@ const InnerRegisterForm = ({ form }: RegisterFormProps) => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         form.validateFieldsAndScroll((err, values) => {
+            const { email, name, password, phone } = values;
             if (!err) {
-                console.log('Received values of form: ', values);
+                axios
+                    .post(`${Configuration.domain}/register`, {
+                        email,
+                        name,
+                        password,
+                        phone,
+                    })
+                    .then(response => {
+                        if (response.data.message === 'SUCCESS') {
+                            message.success('注册成功！');
+                        } else {
+                            message.error('注册失败!');
+                            console.error(response);
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        message.error(
+                            `注册失败！失败原因：${JSON.stringify(
+                                error,
+                                null,
+                                2
+                            )}`
+                        );
+                    });
             }
         });
     };
@@ -112,7 +148,7 @@ const InnerRegisterForm = ({ form }: RegisterFormProps) => {
         ],
     })(<Input.Password onBlur={handleConfirmBlur} />);
 
-    const NickNameInput = getFieldDecorator('nickname', {
+    const NickNameInput = getFieldDecorator('name', {
         rules: [
             {
                 required: true,
