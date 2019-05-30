@@ -10,8 +10,7 @@ import {
     Button,
 } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
-import Configuration from '../../constants/config';
-import axios from 'axios';
+import { register } from '../../api/AccountApi';
 import './style.scss';
 
 const { Option } = Select;
@@ -29,13 +28,7 @@ const InnerRegisterForm = ({ form }: RegisterFormProps) => {
         form.validateFieldsAndScroll((err, values) => {
             const { email, name, password, phone } = values;
             if (!err) {
-                axios
-                    .post(`${Configuration.domain}/register`, {
-                        email,
-                        name,
-                        password,
-                        phone,
-                    })
+                register(email, name, password, phone)
                     .then(response => {
                         if (response.data.message === 'SUCCESS') {
                             message.success('注册成功！');

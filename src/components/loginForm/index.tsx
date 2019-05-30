@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { message, Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
-import axios from 'axios';
-import Configuration from '../../constants/config';
+import { login } from '../../api/AccountApi';
 import './style.scss';
 
 interface LoginFormProps {
@@ -16,13 +15,8 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
         e.preventDefault();
         form.validateFields((err, values) => {
             if (!err) {
-                // console.log('Received values of form: ', values);
                 const { email, password } = values;
-                axios
-                    .post(`${Configuration.domain}/login`, {
-                        email,
-                        password,
-                    })
+                login(email, password)
                     .then(response => {
                         if (response.data.message === 'SUCCESS') {
                             message.success('登入成功!');
