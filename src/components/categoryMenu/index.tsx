@@ -1,48 +1,102 @@
 import * as React from 'react';
-import { Menu, Dropdown, Icon } from 'antd';
+import { Menu } from 'antd';
 import SubMenu from 'antd/lib/menu/SubMenu';
+import { CurrentCategoryContext } from '../../stores/categoryPage';
 import './style.scss';
+import { Category } from '../../models/Category';
 const { Item: MenuItem } = Menu;
 
+const initMenuTree: Category[] = [
+    {
+        name: '数码',
+        children: [
+            {
+                name: '空调',
+                children: [
+                    {
+                        name: '格力空调',
+                        children: [],
+                    },
+                    {
+                        name: '美的空调',
+                        children: [],
+                    },
+                ],
+            },
+            {
+                name: '耳机',
+                children: [
+                    {
+                        name: 'beats',
+                        children: [],
+                    },
+                    {
+                        name: '漫步者',
+                        children: [],
+                    },
+                    {
+                        name: '索尼耳机',
+                        children: [],
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        name: '母婴',
+        children: [
+            {
+                name: '奶粉',
+                children: [
+                    {
+                        name: '贝因美奶粉',
+                        children: [],
+                    },
+                    {
+                        name: '君乐宝奶粉',
+                        children: [],
+                    },
+                ],
+            },
+            {
+                name: '童装',
+                children: [
+                    {
+                        name: '爬爬服',
+                        children: [],
+                    },
+                    {
+                        name: '婴儿睡衣',
+                        children: [],
+                    },
+                ],
+            },
+        ],
+    },
+];
+
 export const CategoryMenu = () => {
-    const menuTree = [
-        {
-            name: '数码',
-            children: [
-                {
-                    name: '空调',
-                    children: ['格力空调', '美的空调'],
-                },
-                {
-                    name: '耳机',
-                    children: ['beats', '漫步者', '索尼耳机'],
-                },
-            ],
-        },
-        {
-            name: '母婴',
-            children: [
-                {
-                    name: '奶粉',
-                    children: ['贝因美奶粉', '君乐宝奶粉'],
-                },
-                {
-                    name: '童装',
-                    children: ['爬爬服', '婴儿睡衣'],
-                },
-            ],
-        },
-    ];
+    const { currentCategory, setCurrentCategory } = CurrentCategoryContext();
+    const [menuTree, setMenuTree] = React.useState<Category[]>(initMenuTree);
+    const handleSelectCategory = ({ key }: any) => {
+        setCurrentCategory(key);
+    };
 
     return (
         <div className="category-menu">
             {menuTree.map(level1 => (
-                <Menu>
+                <Menu
+                    key={level1.name}
+                    onSelect={handleSelectCategory}
+                    selectedKeys={[currentCategory]}
+                >
                     <SubMenu title={level1.name}>
                         {level1.children.map(level2 => (
-                            <SubMenu title={level2.name}>
+                            <SubMenu title={level2.name} key={level2.name}>
                                 {level2.children.map(level3 => (
-                                    <MenuItem>{level3}</MenuItem>
+                                    <MenuItem key={level3.name}>
+                                        {level3.name}
+                                    </MenuItem>
                                 ))}
                             </SubMenu>
                         ))}

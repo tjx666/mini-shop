@@ -1,11 +1,15 @@
 import * as React from 'react';
-import { CategoryMenu } from '../../../components';
+import { CategoryMenu, ProductsOfCategory } from '../../../components';
+import { CurrentCategoryContext } from '../../../stores/categoryPage';
 import './style.scss';
 
 export const CategoryPage = () => {
     return (
         <main className="category-page">
-            <CategoryMenu />
+            <CurrentCategoryContext.Provider>
+                <CategoryMenu />
+                <ProductsOfCategory category="数码产品" />
+            </CurrentCategoryContext.Provider>
         </main>
     );
 };

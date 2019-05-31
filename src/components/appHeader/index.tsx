@@ -13,6 +13,11 @@ interface AppHeaderProps {
 export const AppHeader = ({
     avatarSrc = require('../../assets/images/avatar.png'),
 }: AppHeaderProps) => {
+    const [current, setCurrent] = React.useState<string>('home');
+    const handleSelect = (event: any) => {
+        setCurrent(event.key);
+    };
+
     return (
         <Header className="app-header">
             <Link className="app-header-title" to="/home">
@@ -22,12 +27,15 @@ export const AppHeader = ({
                 className="app-header-menu"
                 mode="horizontal"
                 theme="light"
-                selectedKeys={['home']}
+                selectedKeys={[current]}
+                onClick={handleSelect}
             >
                 <MenuItem className="menu-item" key="home">
-                    首页
+                    <Link to="/">首页</Link>
                 </MenuItem>
-                <MenuItem className="menu-item">分类</MenuItem>
+                <MenuItem className="menu-item">
+                    <Link to="/category">分类</Link>
+                </MenuItem>
                 <MenuItem className="menu-item">购物车</MenuItem>
             </Menu>
             <Avatar className="app-header-avatar" alt="头像" src={avatarSrc} />

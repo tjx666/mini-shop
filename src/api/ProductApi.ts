@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import Chance from 'chance';
 import { Product } from '../models/Product';
+import { Category } from '../models/Category';
 const chance = new Chance();
 
 export const getHottestProducts = async (
@@ -38,4 +39,8 @@ export const getHottestProducts = async (
             saleVolume: initialSaleVolume,
         };
     });
+};
+
+export const getProductsByCategory = (category: Category) => {
+    return;
 };
