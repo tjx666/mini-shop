@@ -1,8 +1,8 @@
 import axios from 'axios';
-import Configuration from '../constants/config';
+import configuration from '../constants/config';
 
 export const login = (email: String, password: String) => {
-    return axios.post(`${Configuration.domain}/login`, {
+    return axios.post(`${configuration.domain}/users/login`, {
         email,
         password,
     });
@@ -14,7 +14,7 @@ export const register = (
     password: String,
     phone: String
 ) => {
-    return axios.post(`${Configuration.domain}/register`, {
+    return axios.post(`${configuration.domain}/users/register`, {
         email,
         name,
         password,

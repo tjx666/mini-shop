@@ -31,6 +31,7 @@ const Backend = () => {
             <AdminHeader />
             <Switch>
                 <Route path="/be/category" component={CategoryManage} />
+                <Redirect to="/be/category" />
             </Switch>
         </div>
     );
@@ -42,7 +43,7 @@ const App = () => {
             <Switch>
                 <Route path="/fe" component={Frontend} />
                 <Route path="/be" component={Backend} />
-                <Redirect to="/fe" />
+                <Redirect to="/be" />
             </Switch>
         </div>
     );

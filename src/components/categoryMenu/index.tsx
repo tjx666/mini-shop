@@ -6,78 +6,9 @@ import './style.scss';
 import { Category } from '../../models/Category';
 const { Item: MenuItem } = Menu;
 
-const initMenuTree: Category[] = [
-    {
-        name: '数码',
-        children: [
-            {
-                name: '空调',
-                children: [
-                    {
-                        name: '格力空调',
-                        children: [],
-                    },
-                    {
-                        name: '美的空调',
-                        children: [],
-                    },
-                ],
-            },
-            {
-                name: '耳机',
-                children: [
-                    {
-                        name: 'beats',
-                        children: [],
-                    },
-                    {
-                        name: '漫步者',
-                        children: [],
-                    },
-                    {
-                        name: '索尼耳机',
-                        children: [],
-                    },
-                ],
-            },
-        ],
-    },
-    {
-        name: '母婴',
-        children: [
-            {
-                name: '奶粉',
-                children: [
-                    {
-                        name: '贝因美奶粉',
-                        children: [],
-                    },
-                    {
-                        name: '君乐宝奶粉',
-                        children: [],
-                    },
-                ],
-            },
-            {
-                name: '童装',
-                children: [
-                    {
-                        name: '爬爬服',
-                        children: [],
-                    },
-                    {
-                        name: '婴儿睡衣',
-                        children: [],
-                    },
-                ],
-            },
-        ],
-    },
-];
-
 export const CategoryMenu = () => {
     const { currentCategory, setCurrentCategory } = CurrentCategoryContext();
-    const [menuTree, setMenuTree] = React.useState<Category[]>(initMenuTree);
+    const [menuTree, setMenuTree] = React.useState<Category[]>([]);
     const handleSelectCategory = ({ key }: any) => {
         setCurrentCategory(key);
     };

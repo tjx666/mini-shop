@@ -1,15 +1,45 @@
 import * as React from 'react';
-import { Button } from 'antd';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import { Menu, Icon } from 'antd';
+import { CategoryEditor } from '../../../components';
 import './style.scss';
+const { Item: MenuItem } = Menu;
 
 export const CategoryManage = () => {
+    const [selectedKeys, setSelectedKeys] = React.useState<string[]>([
+        'category-tree',
+    ]);
+    const handleClick = ({ key }: any) => {
+        setSelectedKeys([key]);
+        console.log({ key });
+    };
+
     return (
         <main className="category-manage">
-            <div className="modes">
-                <Button>查看分类</Button>
-                <Button>批量删除</Button>
-                <Button>添加类别</Button>
-            </div>
+            <Menu
+                className="modes"
+                mode="horizontal"
+                selectedKeys={selectedKeys}
+                onClick={handleClick}
+            >
+                <MenuItem key="category-tree">
+                    <Icon type="eye" />
+                    查看分类
+                </MenuItem>
+                <MenuItem key="batch-delete">
+                    <Icon type="delete" />
+                    批量删除
+                </MenuItem>
+                <MenuItem key="add-category">
+                    <Link to="/be/category/add/">
+                        <Icon type="plus" />
+                        添加类别
+                    </Link>
+                </MenuItem>
+            </Menu>
+            <Switch>
+                <Route path="/be/category/add/" component={CategoryEditor} />>
+            </Switch>
         </main>
     );
 };
