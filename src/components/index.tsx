@@ -6,3 +6,4 @@ export * from './categoryMenu';
 export * from './productsOfCategory';
 export * from './adminHeader';
 export * from './categoryEditor';
+export * from './CategoryTrees';

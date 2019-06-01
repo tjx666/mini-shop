@@ -1,9 +1,17 @@
 import * as React from 'react';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
-import { CategoryEditor } from '../../../components';
+import {
+    CategoryEditor,
+    CategoryTrees,
+    CategoryTreesMode,
+} from '../../../components';
 import './style.scss';
 const { Item: MenuItem } = Menu;
+
+const BatchDelete = () => {
+    return <CategoryTrees mode={CategoryTreesMode.BATCH_DELETE} />;
+};
 
 export const CategoryManage = () => {
     const [selectedKeys, setSelectedKeys] = React.useState<string[]>([
@@ -11,7 +19,6 @@ export const CategoryManage = () => {
     ]);
     const handleClick = ({ key }: any) => {
         setSelectedKeys([key]);
-        console.log({ key });
     };
 
     return (
@@ -23,12 +30,15 @@ export const CategoryManage = () => {
                 onClick={handleClick}
             >
                 <MenuItem key="category-tree">
-                    <Icon type="eye" />
-                    查看分类
+                    <Link to="/be/category/trees">
+                        <Icon type="eye" /> 查看分类
+                    </Link>
                 </MenuItem>
                 <MenuItem key="batch-delete">
-                    <Icon type="delete" />
-                    批量删除
+                    <Link to="/be/category/batch_delete">
+                        <Icon type="delete" />
+                        批量删除
+                    </Link>
                 </MenuItem>
                 <MenuItem key="add-category">
                     <Link to="/be/category/add/">
@@ -38,7 +48,12 @@ export const CategoryManage = () => {
                 </MenuItem>
             </Menu>
             <Switch>
-                <Route path="/be/category/add/" component={CategoryEditor} />>
+                <Route path="/be/category/add/" component={CategoryEditor} />
+                <Route path="/be/category/trees" component={CategoryTrees} />
+                <Route
+                    path="/be/category/batch_delete"
+                    component={BatchDelete}
+                />
             </Switch>
         </main>
     );
