@@ -16,10 +16,8 @@ const Frontend = () => {
             <AppHeader />
             <Switch>
                 <Route path="/fe/home" component={HomePage} />
-                <Route path="/fe/login" component={LoginPage} />
-                <Route path="/fe/register" component={RegisterPage} />
                 <Route path="/fe/category" component={CategoryPage} />
-                <Redirect to="/fe/home" />
+                <Redirect to="/fe/login" />
             </Switch>
         </div>
     );
@@ -43,7 +41,9 @@ const App = () => {
             <Switch>
                 <Route path="/fe" component={Frontend} />
                 <Route path="/be" component={Backend} />
-                <Redirect to="/be" />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/register" component={RegisterPage} />
+                <Redirect to="/login" />
             </Switch>
         </div>
     );

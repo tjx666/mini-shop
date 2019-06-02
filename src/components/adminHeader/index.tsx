@@ -24,10 +24,15 @@ export const AdminHeader = () => {
                 <MenuItem className="menu-item" key="home">
                     <Link to="/be/user">用户管理</Link>
                 </MenuItem>
-                <MenuItem className="menu-item">
+                <MenuItem className="menu-item" key="product">
+                    <Link to="/be/product">产品管理</Link>
+                </MenuItem>
+                <MenuItem className="menu-item" key="category">
                     <Link to="/be/category">分类管理</Link>
                 </MenuItem>
-                <MenuItem className="menu-item">订单管理</MenuItem>
+                <MenuItem className="menu-item" key="order">
+                    <Link to="/be/order">订单管理</Link>
+                </MenuItem>
             </Menu>
         </Header>
     );

@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { Tree } from 'antd';
 import { getCategoryTrees } from '../../api/CategoryApi';
-import './style.scss';
 import { Category } from '../../models/Category';
+import {
+    AntTreeNodeSelectedEvent,
+    AntTreeNodeCheckedEvent,
+} from 'antd/lib/tree';
+import './style.scss';
 const { TreeNode } = Tree;
 
 export enum CategoryTreesMode {
@@ -37,6 +41,19 @@ export const CategoryTrees = ({
     const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
     const [checkedKeys, setCheckedKeys] = React.useState<string[]>([]);
 
+    const handleSelect = (
+        selectedKeys: string[],
+        event: AntTreeNodeSelectedEvent
+    ) => {};
+
+    const handleCheck = (
+        checkedKeys: string[] | any,
+        event: AntTreeNodeCheckedEvent
+    ) => {
+        console.log({ checkedKeys });
+        setSelectedKeys([...selectedKeys, checkedKeys]);
+    };
+
     React.useEffect(() => {
         getCategoryTrees().then(response => {
             const treeData = mapCategoryTreesToTreeData(response.data.data);
@@ -63,6 +80,8 @@ export const CategoryTrees = ({
             checkable={mode === CategoryTreesMode.BATCH_DELETE}
             selectedKeys={selectedKeys}
             checkedKeys={checkedKeys}
+            onSelect={handleSelect}
+            onCheck={handleCheck}
         >
             {renderTreeNodes(treeData)}
         </Tree>

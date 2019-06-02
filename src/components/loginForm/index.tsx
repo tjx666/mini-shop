@@ -4,6 +4,7 @@ import { message, Form, Icon, Input, Button, Checkbox } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { login } from '../../api/AccountApi';
 import './style.scss';
+const configuration = require('../../constants/config');
 
 interface LoginFormProps {
     form: WrappedFormUtils;
@@ -20,6 +21,8 @@ const InnerLoginForm = ({ form }: LoginFormProps) => {
                     .then(response => {
                         if (response.data.message === 'SUCCESS') {
                             message.success('登入成功!');
+                            window.location.href =
+                                'http://localhost:3000/fe/home';
                         } else {
                             message.error('登入失败！请检查您的邮箱和密码！');
                         }

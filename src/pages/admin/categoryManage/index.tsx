@@ -13,10 +13,15 @@ const BatchDelete = () => {
     return <CategoryTrees mode={CategoryTreesMode.BATCH_DELETE} />;
 };
 
+const WatchCategories = () => {
+    return <CategoryTrees mode={CategoryTreesMode.WATCH} />;
+};
+
 export const CategoryManage = () => {
     const [selectedKeys, setSelectedKeys] = React.useState<string[]>([
         'category-tree',
     ]);
+
     const handleClick = ({ key }: any) => {
         setSelectedKeys([key]);
     };
@@ -49,7 +54,7 @@ export const CategoryManage = () => {
             </Menu>
             <Switch>
                 <Route path="/be/category/add/" component={CategoryEditor} />
-                <Route path="/be/category/trees" component={CategoryTrees} />
+                <Route path="/be/category/trees" component={WatchCategories} />
                 <Route
                     path="/be/category/batch_delete"
                     component={BatchDelete}

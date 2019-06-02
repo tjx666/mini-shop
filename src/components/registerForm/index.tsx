@@ -32,6 +32,8 @@ const InnerRegisterForm = ({ form }: RegisterFormProps) => {
                     .then(response => {
                         if (response.data.message === 'SUCCESS') {
                             message.success('注册成功！');
+                            window.location.href =
+                                'http://localhost:3000/login';
                         } else {
                             message.error('注册失败!');
                             console.error(response);
