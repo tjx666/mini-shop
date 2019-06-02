@@ -44,4 +44,4 @@
 
 ### 分类管理
 
-![登入页](https://github.com/tjx666/mini-shop/raw/master/screenshots/category-tree.png?raw=true)
+![登入页](https://github.com/tjx666/mini-shop/raw/master/screenshots/category-trees.png?raw=true)
